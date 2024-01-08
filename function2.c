@@ -1,8 +1,9 @@
 #include "monty.h"
+
 /**
- * __add - function
- * @stack: listes of integers
- * @line_number: line_number
+ * __add - fonction pour additionner les deux premiers éléments de la pile
+ * @stack: pointeur vers le sommet de la pile
+ * @line_number: numéro de la ligne dans le fichier Monty
  */
 void __add(stack_t **stack, unsigned int line_number)
 {
@@ -12,14 +13,14 @@ void __add(stack_t **stack, unsigned int line_number)
 		error = 1;
 		return;
 	}
-	(*stack)->next->n += (*stack)->n;
-	__pop(stack, line_number);
+	(*stack)->next->n += (*stack)->n; // Additionne les deux premiers éléments de la pile
+	__pop(stack, line_number); // Appelle la fonction __pop pour retirer le premier élément
 }
 
 /**
- * __swap - function
- * @stack: listes of intgers
- * @line_number: line number
+ * __swap - fonction pour échanger les deux premiers éléments de la pile
+ * @stack: pointeur vers le sommet de la pile
+ * @line_number: numéro de la ligne dans le fichier Monty
  */
 void __swap(stack_t **stack, unsigned int line_number)
 {
@@ -32,8 +33,7 @@ void __swap(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	tmp = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = tmp;
-
+	tmp = (*stack)->n; // Stocke la valeur du premier élément dans une variable temporaire
+	(*stack)->n = (*stack)->next->n; // Échange les valeurs entre les deux premiers éléments de la pile
+	(*stack)->next->n = tmp; // Restaure la valeur précédente du premier élément à partir de la variable temporaire
 }
